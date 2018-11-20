@@ -1,0 +1,49 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: serverless-slack-invite
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-east-1
+
+  environment:
+    SLACK_API_TOKEN: ${env:SLACK_API_TOKEN}
+    SLACK_SUBDOMAIN: ${env:SLACK_SUBDOMAIN}
+
+functions:
+  app:
+    handler: handler.app
+    name: '${self:service}-app-router-${self:custom.stage}'
+    timeout: 30
+    events:
+      - http:
+          path: /
+          method: any
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+            allowCredentials: false
+      - http:
+          path: '{proxy+}'
+          method: any
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+            allowCredentials: false
