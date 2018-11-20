@@ -7,9 +7,9 @@ exports.init = (event, context) => {
         token: process.env.SLACK_API_TOKEN,
         gcaptcha_secret: process.env.GOOGLE_CAPTCHA_SECRET,
         gcaptcha_sitekey: process.env.GOOGLE_CAPTCHA_SITEKEY,
-        path: process.env.BASE_PATH || '/',
+        path: process.env.BASE_PATH || '/'
     }
     var app = SlackInvite(options)
     const server = awsServerlessExpress.createServer(app)
     awsServerlessExpress.proxy(server, event, context)
-};
+}
