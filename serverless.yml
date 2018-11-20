@@ -27,7 +27,7 @@ provider:
 
 functions:
   app:
-    handler: handler.app
+    handler: dist/app.init
     name: '${self:service}-app-router-${self:custom.stage}'
     timeout: 30
     events:
