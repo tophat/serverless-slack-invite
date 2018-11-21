@@ -25,10 +25,10 @@ jobs:
             - node_modules
           key: deps-v1-{{ checksum "yarn.lock" }}
 
-#      - run:
-#          name: Lint
-#          command: yarn lint
-#          when: always
+      - run:
+          name: Lint
+          command: yarn lint
+          when: always
 
       - run:
           name: Package functions
