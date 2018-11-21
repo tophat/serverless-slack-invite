@@ -46,7 +46,7 @@ export default class Slack {
                         ) {
                             reject(
                                 new Error(
-                                    `Missing admin scope: The token you provided is for an account that is not an admin. You must provide a token from an admin account in order to invite users through the Slack API.`,
+                                    `Missing admin scope: The token you provided is for an account that is not an admin.`,
                                 ),
                             )
                         } else if (providedError === 'already_invited') {
