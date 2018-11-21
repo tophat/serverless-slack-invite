@@ -60,7 +60,7 @@ By posting `email` to this endpoint, a Slack invitation will be sent from the us
 
 This enpoint will return `400` if the email is not valid or user is already invited with following JSON as response:
 
-```{ success: false, message: "Error Message" }```
+```{"success": false, "message": "Error Message" }```
 
 ----
 
@@ -68,7 +68,7 @@ This enpoint will return `400` if the email is not valid or user is already invi
 
 Returns number of active and total members on Slack in following format:
 
-```{"success":true,"stats":{"total":39,"active":25}}```
+```{"success": true, "stats": {"total": 39, "active": 25}}```
 
 
 ## Contributors
