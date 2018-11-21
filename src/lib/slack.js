@@ -1,7 +1,7 @@
 import request from 'superagent'
 
 export default class Slack {
-    constructor({ token, interval, subdomain }) {
+    constructor({ token, subdomain }) {
         this.channelsByName = {}
         this.org = {}
         this.subdomain = subdomain
@@ -21,7 +21,9 @@ export default class Slack {
 
             request
                 .post(
-                    `https://${this.subdomain}.slack.com/api/users.admin.invite`
+                    `https://${
+                        this.subdomain
+                    }.slack.com/api/users.admin.invite`,
                 )
                 .type('form')
                 .send(data)
@@ -44,14 +46,14 @@ export default class Slack {
                         ) {
                             reject(
                                 new Error(
-                                    `Missing admin scope: The token you provided is for an account that is not an admin. You must provide a token from an admin account in order to invite users through the Slack API.`
-                                )
+                                    `Missing admin scope: The token you provided is for an account that is not an admin. You must provide a token from an admin account in order to invite users through the Slack API.`,
+                                ),
                             )
                         } else if (providedError === 'already_invited') {
                             reject(
                                 new Error(
-                                    'You have already been invited to Slack. Check for an email from feedback@slack.com.'
-                                )
+                                    'You have already been invited to Slack. Check for an email from feedback@slack.com.',
+                                ),
                             )
                         } else if (providedError === 'already_in_team') {
                             reject(new Error(`Sending you to Slack...`))
@@ -75,9 +77,7 @@ export default class Slack {
                     if (err) return reject(err)
 
                     if (!res.body.members || !res.body.members.length)
-                        reject(
-                            new Error(`Invalid Slack response: ${res.status}`)
-                        )
+                        reject(new Error(`Invalid Slack response.`))
 
                     resolve(res.body.members)
                 })
@@ -89,9 +89,7 @@ export default class Slack {
             this.getUsers()
                 .then(users => {
                     if (!users || (users && !users.length)) {
-                        reject(
-                            new Error(`Invalid Slack response: ${res.status}`)
-                        )
+                        reject(new Error(`Invalid Slack response.`))
                     }
 
                     // remove slackbot and bots from users

@@ -19,8 +19,8 @@ export default function badge({ total, active }) {
         svg(
             'g text-anchor=middle font-family=Verdana font-size=11',
             text({ str: title, x: Math.round(lw / 2), y: 14 }),
-            text({ str: value, x: lw + Math.round(rw / 2), y: 14 })
-        )
+            text({ str: value, x: lw + Math.round(rw / 2), y: 14 }),
+        ),
     )
 }
 
@@ -28,7 +28,7 @@ export default function badge({ total, active }) {
 function text({ str, x, y }) {
     return [
         svg(`text fill=#010101 fill-opacity=.3 x=${x} y=${y + 1}`, str),
-        svg(`text fill=#fff x=${x} y=${y}`, str)
+        svg(`text fill=#fff x=${x} y=${y}`, str),
     ]
 }
 

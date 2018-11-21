@@ -1,31 +1,20 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import { Server as http } from 'http'
 import remail from 'email-regex'
 import cors from 'cors'
-import request from 'superagent'
 import path from 'path'
 
 import badge from './badge'
 import Slack from './slack'
 
-export default function SlackInvite({
-    token,
-    interval = 5000,
-    subdomain,
-    gcaptcha_secret,
-    gcaptcha_sitekey,
-    server = false
-}) {
+export default function SlackInvite({ token, subdomain }) {
     let app = express()
     app.use('/assets', express.static(path.join(__dirname, 'assets')))
     app.use(bodyParser.json({ strict: false }))
 
-    let assets = __dirname + '/assets'
-
     let slack = new Slack({
         token,
-        subdomain
+        subdomain,
     })
 
     app.options('*', cors())
@@ -77,7 +66,7 @@ export default function SlackInvite({
             .then(stats => {
                 res.send(badge(stats).toHTML())
             })
-            .catch(err => {
+            .catch(() => {
                 res.send(badge({ active: 0, total: 0 }).toHTML())
             })
     })

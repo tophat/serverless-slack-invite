@@ -9,7 +9,7 @@ var options = {
     token: process.env.SLACK_API_TOKEN,
     gcaptcha_secret: process.env.GOOGLE_CAPTCHA_SECRET,
     gcaptcha_sitekey: process.env.GOOGLE_CAPTCHA_SITEKEY,
-    path: process.env.BASE_PATH || '/'
+    path: process.env.BASE_PATH || '/',
 }
 
 var app = SlackInvite(options)
@@ -18,5 +18,7 @@ srv.app = app
 
 srv.listen(port, hostname, function(err) {
     if (err) throw err
+
+    // eslint-disable-next-line
     console.log('%s – listening on %s:%d', new Date(), hostname, port)
 })
