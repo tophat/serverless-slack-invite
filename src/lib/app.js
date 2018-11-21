@@ -1,6 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import remail from 'email-regex'
+import validator from 'validator'
 import cors from 'cors'
 import path from 'path'
 
@@ -25,14 +25,14 @@ export default function SlackInvite({ token, subdomain }) {
     })
 
     app.post('/invite', (req, res) => {
-        const { email } = req.body
+        const email = req.body.email
 
         if (!email) {
-            return res.status(400).json({ msg: 'No email provided' })
+            return res.status(400).json({ success: false, msg: 'No email provided' })
         }
 
-        if (!remail().test(email)) {
-            return res.status(400).json({ msg: 'Invalid email' })
+        if (!validator.isEmail(email)) {
+            return res.status(400).json({ success: false, msg: 'Invalid email' })
         }
 
         slack
