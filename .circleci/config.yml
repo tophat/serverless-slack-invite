@@ -36,12 +36,12 @@ jobs:
           when: always
 
       - store_artifacts:
-          path: artifacts
+          path: dist
 
       - persist_to_workspace:
           root: ./
           paths:
-            - artifacts/
+            - dist/
             - node_modules/
 
   deploy:
