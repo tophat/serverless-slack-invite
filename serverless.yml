@@ -13,8 +13,16 @@
 
 service: serverless-slack-invite
 
+plugins:
+  - serverless-domain-manager
+
 custom:
   stage: ${opt:stage, self:provider.stage}
+  customDomain:
+    domainName: slackinvite.dev.tophat.com
+    basePath: ''
+    stage: ${self:provider.stage}
+    createRoute53Record: true
 
 provider:
   name: aws
@@ -47,3 +55,5 @@ functions:
             headers:
               - Content-Type
             allowCredentials: false
+
+
