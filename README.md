@@ -15,7 +15,7 @@ A serverless service providing badge and invitation gateway for public Slack cha
 - `SLACK_API_TOKEN`: The slack API token generated in Step 2
 - `SLACK_SUBDOMAIN`: Your slack subdomain for your workspace (https://**your-subdomain**.slack.com)
 
-**Step 4:** Run following command:
+**Step 4:** Run following commands:
 
 ```
 yarn install
