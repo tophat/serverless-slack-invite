@@ -1,11 +1,11 @@
-import SlackInvite from './app'
+import SlackInvite from './lib/app'
 import { Server as http } from 'http'
 
-const hostname = '0.0.0.0'
-const port = 3000
+const hostname = process.env.HOSTNAME || '0.0.0.0'
+const port = process.env.PORT || 3000
 
 var options = {
-    org: process.env.SLACK_SUBDOMAIN,
+    subdomain: process.env.SLACK_SUBDOMAIN,
     token: process.env.SLACK_API_TOKEN,
     gcaptcha_secret: process.env.GOOGLE_CAPTCHA_SECRET,
     gcaptcha_sitekey: process.env.GOOGLE_CAPTCHA_SITEKEY,
