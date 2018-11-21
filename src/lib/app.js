@@ -45,7 +45,7 @@ export default function SlackInvite({ token, subdomain }) {
                 res.json({ success: true })
             })
             .catch(err => {
-                res.status(401).json({ success: false, message: err.message })
+                res.status(400).json({ success: false, message: err.message })
             })
     })
 
@@ -56,7 +56,7 @@ export default function SlackInvite({ token, subdomain }) {
                 res.json({ success: true, stats })
             })
             .catch(err => {
-                res.status(401).json({ success: false, message: err.message })
+                res.status(400).json({ success: false, message: err.message })
             })
     })
 
