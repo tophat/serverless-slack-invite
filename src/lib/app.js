@@ -30,13 +30,13 @@ export default function SlackInvite({ token, subdomain }) {
         if (!email) {
             return res
                 .status(400)
-                .json({ success: false, msg: 'No email provided' })
+                .json({ success: false, message: 'No email provided' })
         }
 
         if (!validator.isEmail(email)) {
             return res
                 .status(400)
-                .json({ success: false, msg: 'Invalid email' })
+                .json({ success: false, message: 'Invalid email' })
         }
 
         slack
