@@ -10,6 +10,8 @@ var options = {
     gcaptcha_secret: process.env.GOOGLE_CAPTCHA_SECRET,
     gcaptcha_sitekey: process.env.GOOGLE_CAPTCHA_SITEKEY,
     path: process.env.BASE_PATH || '/',
+    notification_channel: process.env.NOTIFICATION_CHANNEL,
+    notification_username: process.env.NOTIFICATION_USERNAME || 'Notification',
 }
 
 var app = SlackInvite(options)

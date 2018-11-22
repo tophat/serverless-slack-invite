@@ -108,4 +108,25 @@ export default class Slack {
                 .catch(reject)
         })
     }
+
+    sendMessage({ username, channel, text, icon }) {
+        return new Promise((resolve, reject) => {
+            request
+                .post(
+                    `https://${this.subdomain}.slack.com/api/chat.postMessage`,
+                )
+                .type('form')
+                .send({
+                    channel,
+                    text,
+                    username,
+                    token: this.token,
+                    icon_emoji: icon,
+                })
+                .end(function(err) {
+                    if (err) return reject(err)
+                    resolve()
+                })
+        })
+    }
 }
