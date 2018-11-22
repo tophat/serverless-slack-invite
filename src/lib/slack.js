@@ -109,7 +109,7 @@ export default class Slack {
         })
     }
 
-    sendMessage({ username, channel, text, attachment }) {
+    sendMessage({ username, channel, text, attachment, icon }) {
         return new Promise((resolve, reject) => {
              request
                 .post(
@@ -122,7 +122,8 @@ export default class Slack {
                     channel,
                     text,
                     username,
-                    token: this.token
+                    token: this.token,
+                    icon_emoji: icon
                 })
                 .end(function(err, res) {
                     if (err) return reject(err)
