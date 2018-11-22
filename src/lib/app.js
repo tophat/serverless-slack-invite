@@ -7,7 +7,12 @@ import path from 'path'
 import badge from './badge'
 import Slack from './slack'
 
-export default function SlackInvite({ token, subdomain, notification_channel, notification_username }) {
+export default function SlackInvite({
+    token,
+    subdomain,
+    notification_channel,
+    notification_username,
+}) {
     let app = express()
     app.use('/assets', express.static(path.join(__dirname, 'assets')))
     app.use(bodyParser.json({ strict: false }))
@@ -61,9 +66,11 @@ export default function SlackInvite({ token, subdomain, notification_channel, no
     })
 
     app.all('/notify', (req, res) => {
-
         if (['GET', 'POST'].indexOf(req.method) === -1)
-            return res.status(404).json({ success: false, message: 'Only GET and POST methods are supported' })
+            return res.status(404).json({
+                success: false,
+                message: 'Only GET and POST methods are supported',
+            })
 
         const text = req.query.text || req.body.text
         const icon = req.query.icon || req.body.icon
@@ -76,7 +83,11 @@ export default function SlackInvite({ token, subdomain, notification_channel, no
         // }
 
         if (!notification_channel) {
-            return res.status(400).json({ success: false, message: 'NOTIFICATION_CHANNEL is not provided as an ENV variable' })
+            return res.status(400).json({
+                success: false,
+                message:
+                    'NOTIFICATION_CHANNEL is not provided as an ENV variable',
+            })
         }
 
         slack
@@ -84,7 +95,7 @@ export default function SlackInvite({ token, subdomain, notification_channel, no
                 username: notification_username,
                 channel: notification_channel,
                 icon: icon ? ':' + icon + ':' : ':zap:',
-                text: req.query.text || 'Here is a notification!',
+                text: text || 'Here is a notification!',
             })
             .then(() => {
                 res.json({ success: true })

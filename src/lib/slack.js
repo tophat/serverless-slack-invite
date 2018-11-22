@@ -109,13 +109,11 @@ export default class Slack {
         })
     }
 
-    sendMessage({ username, channel, text, attachment, icon }) {
+    sendMessage({ username, channel, text, icon }) {
         return new Promise((resolve, reject) => {
-             request
+            request
                 .post(
-                    `https://${
-                        this.subdomain
-                    }.slack.com/api/chat.postMessage`,
+                    `https://${this.subdomain}.slack.com/api/chat.postMessage`,
                 )
                 .type('form')
                 .send({
@@ -123,13 +121,12 @@ export default class Slack {
                     text,
                     username,
                     token: this.token,
-                    icon_emoji: icon
+                    icon_emoji: icon,
                 })
-                .end(function(err, res) {
+                .end(function(err) {
                     if (err) return reject(err)
                     resolve()
                 })
-
         })
     }
 }
