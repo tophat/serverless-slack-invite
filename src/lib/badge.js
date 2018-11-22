@@ -6,7 +6,7 @@ const pad = 8 // left / right padding
 const sep = 4 // middle separation
 
 export default function badge({ total, active }) {
-    let value = active ? `${active}/${total}` : '' + total || '–'
+    let value = active ? `${active}/${total}` : 'join'
     let lw = pad + width(title) + sep // left side width
     let rw = sep + width(value) + pad // right side width
     let tw = lw + rw // total width
