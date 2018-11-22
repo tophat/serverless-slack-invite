@@ -24,6 +24,20 @@ custom:
     stage: ${self:provider.stage}
     createRoute53Record: true
 
+  stageSettings:
+    CacheClusterEnabled: true
+    CacheClusterSize: '0.5'
+    MethodSettings:
+      - CachingEnabled: true
+      - HttpMethod: GET
+        ResourcePath: "/"
+        CachingEnabled: true
+        CacheTtlInSeconds: 30
+      - HttpMethod: GET
+        ResourcePath: "/{proxy+}"
+        CachingEnabled: true
+        CacheTtlInSeconds: 30
+
 provider:
   name: aws
   runtime: nodejs8.10
