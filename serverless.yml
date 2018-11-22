@@ -15,6 +15,7 @@ service: serverless-slack-invite
 
 plugins:
   - serverless-domain-manager
+  - serverless-api-stage
 
 custom:
   stage: ${opt:stage, self:provider.stage}
