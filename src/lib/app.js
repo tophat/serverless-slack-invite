@@ -60,6 +60,21 @@ export default function SlackInvite({ token, subdomain }) {
             })
     })
 
+    app.get('/notify', (req, res) => {
+        slack
+            .sendMessage({
+                username: 'CircleCI',
+                channel: 'circleci-failures',
+                text: 'This is a test.',
+            })
+            .then(() => {
+                res.json({ success: true })
+            })
+            .catch(err => {
+                res.status(400).json({ success: false, message: err.message })
+            })
+    })
+
     app.get('/badge.svg', (req, res) => {
         res.type('svg')
         res.set('Cache-Control', 'max-age=0, no-cache')
