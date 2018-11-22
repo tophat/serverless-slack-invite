@@ -18,7 +18,7 @@ var app = SlackInvite(options)
 let srv = http(app)
 srv.app = app
 
-srv.listen(port, hostname, function(err) {
+srv.listen(port, hostname, function(err, unused) {
     if (err) throw err
 
     // eslint-disable-next-line
