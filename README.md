@@ -50,9 +50,9 @@ Displays an SVG badge with the number of online users and total users in Slack.
 You can embed this badge in your Github repo using following snippet:
 
 ```
-[![Slack](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/)
+[![Slack](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/#join-slack)
 ```
-[![Slack](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/)
+[![Slack](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/#join-slack)
 
 ----
 
