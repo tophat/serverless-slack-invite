@@ -52,7 +52,7 @@ You can embed this badge in your Github repo using following snippet:
 ```
 [![Slack](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/#join-slack)
 ```
-[![Slack](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/#join-slack)
+[![Slack](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/#join-slack) [![Greenkeeper badge](https://badges.greenkeeper.io/tophat/serverless-slack-invite.svg)](https://greenkeeper.io/)
 
 ----
 
