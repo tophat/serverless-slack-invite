@@ -24,10 +24,10 @@
   "license": "ISC",
   "dependencies": {
     "aws-serverless-express": "^3.3.5",
-    "body-parser": "1.10.2",
-    "cors": "2.7.1",
+    "body-parser": "1.18.3",
+    "cors": "2.8.5",
     "express": "^4.16.4",
-    "hostenv": "1.0.1",
+    "hostenv": "1.0.6",
     "superagent": "^4.0.0",
     "validator": "^10.9.0",
     "vd": "^0.8.2"
