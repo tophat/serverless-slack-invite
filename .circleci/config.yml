@@ -60,7 +60,7 @@ jobs:
 
       - run:
           name: Deploy Production
-          command: BASE_PATH="/" NOTIFICATION_CHANNEL="circleci-failures" NOTIFICATION_USERNAME="CircleCI" SLACK_SUBDOMAIN="tophat-opensource" yarn serverless deploy
+          command: BASE_PATH="/" NOTIFICATION_CHANNEL="sls-slack-invite" NOTIFICATION_USERNAME="CircleCI" SLACK_SUBDOMAIN="tophat-opensource" yarn serverless deploy
 
 
 workflows:
