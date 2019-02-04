@@ -50,6 +50,6 @@
     "jest": "^23.6.0",
     "prettier": "^1.15.2",
     "serverless": "^1.33.2",
-    "serverless-domain-manager": "^2.6.6"
+    "serverless-domain-manager": "^3.0.1"
   }
 }
