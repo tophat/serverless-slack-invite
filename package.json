@@ -24,12 +24,12 @@
   "license": "ISC",
   "dependencies": {
     "aws-serverless-express": "^3.3.5",
-    "body-parser": "1.18.3",
+    "body-parser": "1.19.0",
     "cors": "2.8.5",
     "express": "^4.16.4",
     "hostenv": "1.0.6",
-    "superagent": "^4.0.0",
-    "validator": "^10.9.0",
+    "superagent": "^5.1.0",
+    "validator": "^11.1.0",
     "vd": "^0.8.2"
   },
   "devDependencies": {
@@ -37,19 +37,19 @@
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
-    "all-contributors-cli": "^5.4.1",
+    "all-contributors-cli": "^6.8.2",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
+    "babel-jest": "^24.9.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
-    "eslint": "^5.9.0",
-    "eslint-config-prettier": "^3.3.0",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.2.0",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
     "immutable": "^4.0.0-rc.12",
-    "jest": "^23.6.0",
+    "jest": "^24.9.0",
     "prettier": "^1.15.2",
     "serverless": "^1.33.2",
-    "serverless-domain-manager": "^2.6.6"
+    "serverless-domain-manager": "^3.3.0"
   }
 }
