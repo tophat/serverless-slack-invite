@@ -2751,10 +2751,10 @@ hosted-git-info@^2.1.4:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
 
-hostenv@1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/hostenv/-/hostenv-1.0.6.tgz#6e81011aab4a537a70db4588e9497458f9d2c598"
-  integrity sha512-VnP9mlkKSRjt2AMVEFD77gUn6Es+qzkAsYXperK9pZGuG/nteQ52xmZtzKPXfJ7GDIT7jF6ZhVJtwpMtSSOagw==
+hostenv@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/hostenv/-/hostenv-1.1.0.tgz#9989dfae418f9276c63e532d4073a5166279dc9f"
+  integrity sha512-YL9hIOr2XtTIAdz/P0Znvwx0lhpAeOdBkTDb49Z/MwNsSGvIER/hcY1aNAj6RiN7XgeoGHZI+ih4PtzhNOplMg==
 
 html-encoding-sniffer@^1.0.2:
   version "1.0.2"
