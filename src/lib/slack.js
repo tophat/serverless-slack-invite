@@ -2,16 +2,17 @@ import request from 'superagent'
 
 export default class Slack {
     constructor({ token, subdomain }) {
-        this.channelsByName = {}
-        this.org = {}
         this.subdomain = subdomain
         this.token = token
-        this.users = {}
+    }
+
+    apiUrl(method) {
+        return `https://${this.subdomain}.slack.com/api/${method}`
     }
 
     invite({ email, channel }) {
         return new Promise((resolve, reject) => {
-            let data = { email, token: this.token }
+            const data = { email, token: this.token }
 
             if (channel) {
                 data.channels = channel
@@ -20,11 +21,7 @@ export default class Slack {
             }
 
             request
-                .post(
-                    `https://${
-                        this.subdomain
-                    }.slack.com/api/users.admin.invite`,
-                )
+                .post(this.apiUrl('users.admin.invite'))
                 .type('form')
                 .send(data)
                 .end(function(err, res) {
@@ -38,7 +35,7 @@ export default class Slack {
                     // return `200 OK`, and provide other information in the body. So we
                     // need to check for the correct account scope and call the callback
                     // with an error if it's not high enough.
-                    let { ok, error: providedError, needed } = res.body
+                    const { ok, error: providedError, needed } = res.body
                     if (!ok) {
                         if (
                             providedError === 'missing_scope' &&
@@ -71,8 +68,8 @@ export default class Slack {
     getUsers() {
         return new Promise((resolve, reject) => {
             request
-                .get(`https://${this.subdomain}.slack.com/api/users.list`)
-                .query({ token: this.token, presence: 1 })
+                .get(this.apiUrl('users.list'))
+                .query({ token: this.token })
                 .end((err, res) => {
                     if (err) return reject(err)
 
@@ -84,10 +81,22 @@ export default class Slack {
         })
     }
 
+    getUserPresence(userId) {
+        return new Promise((resolve, reject) => {
+            request
+                .get(this.apiUrl('users.getPresence'))
+                .query({ token: this.token, user: userId })
+                .end((err, res) => {
+                    if (err) return reject(err)
+                    resolve(res.body)
+                })
+        })
+    }
+
     getUsersStats() {
         return new Promise((resolve, reject) => {
             this.getUsers()
-                .then(users => {
+                .then(async users => {
                     if (!users || (users && !users.length)) {
                         reject(new Error(`Invalid Slack response.`))
                     }
@@ -98,10 +107,15 @@ export default class Slack {
                         return x.id != 'USLACKBOT' && !x.is_bot && !x.deleted
                     })
 
-                    let total = users.length
-                    let active = users.filter(user => {
-                        return 'active' === user.presence
-                    }).length
+                    const total = users.length
+                    const sumArray = arr => arr.reduce((a, b) => a + b, 0)
+                    const getActiveUsersTask = Promise.all(
+                        users.map(async ({ id }) => {
+                            const user = await this.getUserPresence(id)
+                            return 'active' === user.presence
+                        }),
+                    )
+                    const active = sumArray(await getActiveUsersTask)
 
                     resolve({ total, active })
                 })
