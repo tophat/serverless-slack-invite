@@ -1,4 +1,5 @@
 # serverless-slack-invite
+
 [![Builds](https://img.shields.io/circleci/project/github/tophat/serverless-slack-invite.svg)](https://circleci.com/gh/tophat/serverless-slack-invite)
 [![Slack workspace](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/slack)
 [![Maturity badge - level 2](https://img.shields.io/badge/Maturity-Level%202%20--%20First%20Release-yellowgreen.svg)](https://github.com/tophat/getting-started/blob/master/scorecard.md)
@@ -13,14 +14,15 @@ A serverless service providing badge and invitation gateway for public Slack cha
 **Step 2:** Generate a Slack token using [this page](https://api.slack.com/custom-integrations/legacy-tokens).
 
 **Step 3:** Set following ENV variables:
+
 - `AWS_ACCESS_KEY_ID`: Your AWS access key generated in Step 1
 - `AWS_SECRET_ACCESS_KEY`: Your AWS secret access key generated in Step 1
 - `SLACK_API_TOKEN`: The slack API token generated in Step 2
-- `SLACK_SUBDOMAIN`: Your slack subdomain for your workspace (https://**your-subdomain**.slack.com)
+- `SLACK_SUBDOMAIN`: Your slack subdomain for your workspace `https://<your-subdomain>.slack.com`
 
 **Step 4:** Run following commands:
 
-```
+```sh
 yarn install
 yarn build
 serverless deploy
@@ -28,7 +30,7 @@ serverless deploy
 
 You should be able to pass the ENV variables like this:
 
-```
+```sh
 AWS_ACCESS_KEY_ID="abc" AWS_SECRET_ACCESS_KEY="abc" SLACK_API_TOKEN="abc" SLACK_SUBDOMAIN="your-subdomain" serverless deploy
 ```
 
@@ -36,10 +38,19 @@ It should give you a link to the service!
 
 ## Running as standalone Webserver
 
+**Step 1:** Set following ENV variables:
+
+```sh
+export SLACK_API_TOKEN='abc'
+export SLACK_SUBDOMAIN='your-subdomain'
 ```
+
+**Step 2:** Install, build and start:
+
+```sh
 yarn install
 yarn build
-PORT=3000 node dist/server.js
+yarn start
 ```
 
 ## Endpoints
@@ -50,9 +61,10 @@ Displays an SVG badge with the number of online users and total users in Slack.
 
 You can embed this badge in your Github repo using following snippet:
 
-```
+```md
 [![Slack](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/#join-slack)
 ```
+
 [![Slack](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/#join-slack)
 
 ----
@@ -63,7 +75,9 @@ By posting `email` to this endpoint, a Slack invitation will be sent from the us
 
 This enpoint will return `400` if the email is not valid or user is already invited with following JSON as response:
 
-```{"success": false, "message": "Error Message" }```
+```json
+{"success": false, "message": "Error Message" }
+```
 
 ----
 
@@ -71,8 +85,9 @@ This enpoint will return `400` if the email is not valid or user is already invi
 
 Returns number of active and total members on Slack in following format:
 
-```{"success": true, "stats": {"total": 39, "active": 25}}```
-
+```json
+{"success": true, "stats": {"total": 39, "active": 25}}
+```
 
 ## Contributors
 
@@ -85,4 +100,5 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## Credits
+
 Thanks to [Carol Skelly](https://github.com/iatek) for donating the github organization!
