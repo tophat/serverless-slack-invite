@@ -3,7 +3,6 @@
 [![Builds](https://img.shields.io/circleci/project/github/tophat/serverless-slack-invite.svg)](https://circleci.com/gh/tophat/serverless-slack-invite)
 [![Slack workspace](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/slack)
 [![Maturity badge - level 2](https://img.shields.io/badge/Maturity-Level%202%20--%20First%20Release-yellowgreen.svg)](https://github.com/tophat/getting-started/blob/master/scorecard.md)
-[![Greenkeeper badge](https://badges.greenkeeper.io/tophat/serverless-slack-invite.svg)](https://greenkeeper.io/)
 
 A serverless service providing badge and invitation gateway for public Slack channels. You'll be able to bring this up on AWS in minutes.
 
