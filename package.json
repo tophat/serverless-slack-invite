@@ -9,7 +9,7 @@
     "fix": "eslint --fix .",
     "start": "node dist/server.js",
     "build": "babel src -d dist",
-    "build:watch": "babel-node src/server.js",
+    "build:watch": "nodemon --exec babel-node src/server.js",
     "contrib:add": "all-contributors add",
     "contrib:generate": "all-contributors generate",
     "contrib:check": "all-contributors check",
@@ -50,6 +50,7 @@
     "eslint-plugin-react": "^7.11.1",
     "immutable": "^4.0.0-rc.12",
     "jest": "^24.9.0",
+    "nodemon": "^2.0.2",
     "prettier": "^1.15.2",
     "serverless": "^1.33.2",
     "serverless-domain-manager": "^2.6.6"
