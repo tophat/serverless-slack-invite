@@ -32,7 +32,7 @@
     "express": "^4.16.4",
     "hostenv": "1.0.6",
     "superagent": "^4.0.0",
-    "validator": "^10.9.0",
+    "validator": "^13.7.0",
     "vd": "^0.8.2"
   },
   "devDependencies": {
